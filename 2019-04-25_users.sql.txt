@@ -1,0 +1,75 @@
+-- phpMyAdmin SQL Dump
+-- version 4.8.5
+-- https://www.phpmyadmin.net/
+--
+-- Host: 127.0.0.1
+-- Generation Time: 26-Abr-2019 às 01:30
+-- Versão do servidor: 10.1.38-MariaDB
+-- versão do PHP: 7.3.3
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET AUTOCOMMIT = 0;
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Database: `projeto`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Estrutura da tabela `users`
+--
+
+CREATE TABLE `users` (
+  `id` int(11) NOT NULL,
+  `cpf` varchar(14) NOT NULL,
+  `senha` varchar(20) NOT NULL DEFAULT '0000',
+  `senhaPIN` varchar(80) NOT NULL DEFAULT '@123',
+  `nome` varchar(80) NOT NULL,
+  `email` varchar(80) DEFAULT NULL,
+  `acesso` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  `admin` tinyint(1) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Extraindo dados da tabela `users`
+--
+
+INSERT INTO `users` (`id`, `cpf`, `senha`, `senhaPIN`, `nome`, `email`, `acesso`, `admin`) VALUES
+(1, '987.654.321-00', '123', '@1', 'Lauro Kozovits', 'lauro@ic.uff.br', '2019-04-19 00:00:16', 1),
+(2, '409.097.837-80', '0000', '@2', 'Clark Kent', 'superman@gmail.com', '2019-04-19 00:00:16', 0);
+
+--
+-- Indexes for dumped tables
+--
+
+--
+-- Indexes for table `users`
+--
+ALTER TABLE `users`
+  ADD PRIMARY KEY (`id`),
+  ADD UNIQUE KEY `cpf` (`cpf`),
+  ADD UNIQUE KEY `email` (`email`);
+
+--
+-- AUTO_INCREMENT for dumped tables
+--
+
+--
+-- AUTO_INCREMENT for table `users`
+--
+ALTER TABLE `users`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
